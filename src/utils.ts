@@ -1,12 +1,12 @@
 import type { CellValue } from "./types"
 
-export const cellState = {
-	EMPTY: 0,
-	BLACK: 1,
-	RED: 2,
-	BLACK_WIN: 3,
-	RED_WIN: 4,
-} as const
+export enum CellState {
+	EMPTY = 0,
+	BLACK = 1,
+	RED = 2,
+	BLACK_WIN = 3,
+	RED_WIN = 4,
+}
 
 
 export const cellBgColors = {

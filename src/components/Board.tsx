@@ -1,33 +1,27 @@
-import useGame from '../hooks/useGame'
+import {createEmptyBoard} from '../features/board/boardSlice'
+import BoardHeader from './BoardHeader'
 import Cell from './Cell'
+import GameRestartButton from './GameRestartButton'
 
 export default function Board() {
-	const {winner, board, handleCellClick, handleRestart, getGameStatusMessage} = useGame()
-
+	const emptyBoard = createEmptyBoard()
 	return (
 		<div>
 			<div className="flex flex-col items-center">
-				<h1 className="mb-4 text-2xl font-bold">{getGameStatusMessage()}</h1>
+				<BoardHeader />
 			</div>
-			<div className="grid grid-cols-7">
-				{board.map((row, rowIndex) =>
-					row.map((_, colIndex) => (
-						<Cell
-							key={`${rowIndex}-${colIndex}`}
-							value={board[rowIndex][colIndex]}
-							disabled={!!winner}
-							onClick={() => handleCellClick(rowIndex, colIndex)}
-						/>
-					)),
-				)}
+			<div className="flex flex-col">
+				{emptyBoard.map((row, rowIndex) => (
+					<div className="flex" key={rowIndex}>
+						{row.map((_, colIndex) => (
+							<Cell key={`${colIndex}-${rowIndex}`} row={rowIndex} col={colIndex} />
+						))}
+					</div>
+				))}
 			</div>
 
 			<div className="flex">
-				<button
-					className={`ml-auto mt-4 rounded-xl p-2 ${winner ? 'bg-green-500' : 'bg-gray-200'}`}
-					onClick={handleRestart}>
-					Restart
-				</button>
+				<GameRestartButton />
 			</div>
 		</div>
 	)

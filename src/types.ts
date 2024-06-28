@@ -1,3 +1,3 @@
-import { cellState } from "./utils";
+import { CellState } from "./utils";
 
-export type CellValue = (typeof cellState)[keyof typeof cellState]
+export type CellValue = (typeof CellState)[keyof typeof CellState]

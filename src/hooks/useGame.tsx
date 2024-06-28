@@ -1,18 +1,18 @@
 import { useState } from "react"
 import { CellValue } from "../types"
-import { cellState } from "../utils"
+import { CellState } from "../utils"
 
 export default function useGame() {
 	const [winner, setWinner] = useState<'red' | 'black' | 'draw' | null>(null)
 	const [currentPlayer, setCurrentPlayer] = useState<'red' | 'black'>('black')
 	const [board, setBoard] = useState<CellValue[][]>(
-		new Array(6).fill(0).map(() => new Array(7).fill(cellState.EMPTY)),
+		new Array(6).fill(0).map(() => new Array(7).fill(CellState.EMPTY)),
 	)
 
 	function handleCellClick(rowIndex: number, colIndex: number) {
 		if (winner) return
 		const newBoard = board.map((row) => [...row])
-		newBoard[rowIndex][colIndex] = currentPlayer === 'red' ? cellState.RED : cellState.BLACK
+		newBoard[rowIndex][colIndex] = currentPlayer === 'red' ? CellState.RED : CellState.BLACK
 		setBoard(newBoard)
 		setCurrentPlayer(currentPlayer === 'red' ? 'black' : 'red')
 		if (!checkWinner(newBoard)) {
@@ -21,7 +21,7 @@ export default function useGame() {
 	}
 
 	function checkDraw(board: number[][]) {
-		if (board.every((row) => row.every((cell) => cell !== cellState.EMPTY))) {
+		if (board.every((row) => row.every((cell) => cell !== CellState.EMPTY))) {
 			setWinner('draw')
 		}
 	}
@@ -30,7 +30,7 @@ export default function useGame() {
 		const newBoard = board.map((row) => [...row])
 		for (let i = 0; i < 4; i++) {
 			newBoard[row + i * rowDir][col + i * colDir] =
-				currentPlayer === 'red' ? cellState.RED_WIN : cellState.BLACK_WIN
+				currentPlayer === 'red' ? CellState.RED_WIN : CellState.BLACK_WIN
 		}
 		setBoard(newBoard)
 	}
@@ -49,7 +49,7 @@ export default function useGame() {
 			] as const
 
 			if (isConsecutiveFour(...cells)) {
-				setWinner(cells[0] === cellState.RED ? 'red' : 'black')
+				setWinner(cells[0] === CellState.RED ? 'red' : 'black')
 				drawWinnerCells(row, col, rowDir, colDir)
 				return true
 			}
@@ -76,7 +76,7 @@ export default function useGame() {
 	}
 
 	function handleRestart() {
-		setBoard(board.map(() => new Array(7).fill(cellState.EMPTY)))
+		setBoard(board.map(() => new Array(7).fill(CellState.EMPTY)))
 		setCurrentPlayer('black')
 		setWinner(null)
 	}
