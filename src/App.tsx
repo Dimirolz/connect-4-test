@@ -1,6 +1,5 @@
 // @TODO: create game history
 // @TODO: write tests for 4 type of wins and for draw
-// @TODO: optimize `checkForWinner`
 
 import Board from './components/Board'
 
