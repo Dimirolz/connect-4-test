@@ -13,7 +13,7 @@ export default function Cell({row, col}: {row: number; col: number}) {
 			<div
 				style={{'--start-y': startY, '--fall-duration': fallDuration} as CSSProperties}
 				className={cn('flex h-full w-full items-center justify-center rounded-full', bgColor, {
-					'animate-fall': value === CellState.BLACK || value === CellState.RED,
+					'animate-fall': value !== CellState.EMPTY,
 				})}>
 				{(value === CellState.BLACK_WIN || value === CellState.RED_WIN) && (
 					<span className="text-white">X</span>
