@@ -1,4 +1,4 @@
-import {useAppSelector} from '../hooks/store'
+import {useAppSelector} from '../hooks'
 import {cn} from '../utils'
 
 export default function BoardHeader() {

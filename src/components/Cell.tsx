@@ -1,6 +1,6 @@
 import {CSSProperties} from 'react'
-import {useAppSelector} from '../hooks/store'
 import {CellState, cellBgColors, cn} from '../utils'
+import {useAppSelector} from '../hooks'
 
 export default function Cell({row, col}: {row: number; col: number}) {
 	const value = useAppSelector((state) => state.board.board[row][col])

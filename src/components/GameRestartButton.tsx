@@ -1,6 +1,6 @@
 import {restartGame} from '../features/board/boardSlice'
-import {useAppDispatch, useAppSelector} from '../hooks/store'
-import { cn } from '../utils'
+import {useAppDispatch, useAppSelector} from '../hooks'
+import {cn} from '../utils'
 
 export default function GameRestartButton() {
 	const dispatch = useAppDispatch()

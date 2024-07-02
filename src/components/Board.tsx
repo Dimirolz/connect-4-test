@@ -10,7 +10,7 @@ export default function Board() {
 			<div className="flex flex-col items-center">
 				<BoardHeader />
 			</div>
-			<div className="flex relative bg-gray-300 rounded overflow-hidden">
+			<div className="relative flex overflow-hidden rounded bg-gray-300">
 				{new Array(BOARD_WIDTH).fill(0).map((_, colIndex) => {
 					return (
 						<Column col={colIndex} key={colIndex}>

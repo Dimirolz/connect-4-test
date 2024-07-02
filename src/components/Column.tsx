@@ -1,5 +1,5 @@
 import {makeTurn} from '../features/board/boardSlice'
-import {useAppDispatch, useAppSelector} from '../hooks/store'
+import {useAppDispatch, useAppSelector} from '../hooks'
 import {CellState, cn} from '../utils'
 
 type TColumnProps = React.PropsWithChildren<React.ComponentPropsWithoutRef<'button'>> & {
@@ -15,7 +15,7 @@ export default function Column({className, children, col, ...props}: TColumnProp
 
 	return (
 		<button
-			className={cn('flex flex-col px-[2px] gap-1 py-2 first:pl-2 last:pr-2', className, {
+			className={cn('flex flex-col gap-1 px-[2px] py-2 first:pl-2 last:pr-2', className, {
 				'hover:bg-[#bdc1c8]': !columnIsFull,
 			})}
 			onClick={() => dispatch(makeTurn({col}))}
