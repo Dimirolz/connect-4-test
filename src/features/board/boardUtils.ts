@@ -7,8 +7,8 @@ export const BOARD_WIDTH = 7
 const directions = [
 	{rowDir: 0, colDir: 1}, // horizontal
 	{rowDir: 1, colDir: 0}, // vertical
-	{rowDir: 1, colDir: 1}, // right diagonal
-	{rowDir: 1, colDir: -1}, // left diagonal
+	{rowDir: 1, colDir: 1}, // from top left to bottom right diagonal
+	{rowDir: 1, colDir: -1}, // from top right to bottom left diagonal
 ]
 
 type TLoopBoardProps = {
