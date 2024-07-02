@@ -15,8 +15,8 @@ export default function Column({className, children, col, ...props}: TColumnProp
 
 	return (
 		<button
-			className={cn('flex flex-col rounded px-[2px] gap-1', className, {
-				'hover:bg-gray-100': !columnIsFull,
+			className={cn('flex flex-col px-[2px] gap-1 py-2 first:pl-2 last:pr-2', className, {
+				'hover:bg-[#bdc1c8]': !columnIsFull,
 			})}
 			onClick={() => dispatch(makeTurn({col}))}
 			disabled={columnIsFull}

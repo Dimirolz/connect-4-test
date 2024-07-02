@@ -38,5 +38,5 @@ export default function BoardHeader() {
 		)
 	}
 
-	return <h1 className="mb-4 text-2xl font-bold">{renderStatusMessage()}</h1>
+	return <h2 className="mb-4 text-2xl font-bold">{renderStatusMessage()}</h2>
 }

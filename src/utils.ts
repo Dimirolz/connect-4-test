@@ -15,7 +15,7 @@ export enum CellState {
 }
 
 export const cellBgColors = {
-	0: 'bg-gray-300',
+	0: 'bg-white',
 	1: 'bg-black',
 	2: 'bg-red-500',
 	3: 'bg-black',
