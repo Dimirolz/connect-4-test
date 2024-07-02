@@ -27,6 +27,11 @@ type TMarkWinCellsProps = Omit<TLoopBoardProps, 'cb'> & {
 	winCellValue: CellValue
 }
 
+/**
+ * Traverse cells from the starting position in the specified direction, then in the opposite direction, up to a maximum of 4 cells.
+ * Invoke the callback for each cell that matches the specified cellValue.
+ * Stop traversing if a cell does not match the specified cellValue after changing direction.
+ */
 function traverseConsecutiveCells({
 	board,
 	cellValue,
