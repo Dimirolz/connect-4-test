@@ -2,6 +2,8 @@
 
 This is a simple implementation of the Connect Four game using React.
 
+The game is hosted on Vercel and can be accessed at https://connect-4-test.vercel.app
+
 ## How to run
 
 1. Clone the repository
