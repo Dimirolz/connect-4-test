@@ -1,30 +1,24 @@
-import {makeTurn} from '../features/board/boardSlice'
-import {useAppDispatch, useAppSelector} from '../hooks/store'
-import {cellBgColors, CellState} from '../utils'
+import {CSSProperties} from 'react'
+import {useAppSelector} from '../hooks/store'
+import {CellState, cellBgColors, cn} from '../utils'
 
 export default function Cell({row, col}: {row: number; col: number}) {
 	const value = useAppSelector((state) => state.board.board[row][col])
-	const dispatch = useAppDispatch()
-	const color = cellBgColors[value]
-	const hoverColor = value === CellState.EMPTY ? 'bg-gray-400' : ''
+	const bgColor = cellBgColors[value]
+	const startY = `calc(-${row * 100}% - 48px)`
+	const fallDuration = `${Math.max(row * 0.1, 0.15)}s`
 
 	return (
-		<button
-			className={'group h-12 w-12 cursor-pointer p-[2px]'}
-			onClick={() =>
-				dispatch(
-					makeTurn({
-						col,
-					}),
-				)
-			}>
+		<div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-300">
 			<div
-				className={`h-full w-full rounded-full ${color} flex items-center justify-center group-hover:${hoverColor}`}>
-				{/* {row}/{col} */}
+				style={{'--start-y': startY, '--fall-duration': fallDuration} as CSSProperties}
+				className={cn('flex h-full w-full items-center justify-center rounded-full', bgColor, {
+					'animate-fall': value === CellState.BLACK || value === CellState.RED,
+				})}>
 				{(value === CellState.BLACK_WIN || value === CellState.RED_WIN) && (
 					<span className="text-white">X</span>
 				)}
 			</div>
-		</button>
+		</div>
 	)
 }
